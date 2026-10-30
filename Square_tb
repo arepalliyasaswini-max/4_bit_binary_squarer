@@ -1,0 +1,24 @@
+`timescale 1ns / 1ps
+
+module squarer_tb;
+
+reg [3:0] A;
+wire [7:0] Y;
+integer i;
+squarer dut (
+    .A(A),
+    .Y(Y)
+);
+initial begin
+    A = 4'b0000;
+    #10;
+    for (i = 0; i < 16; i = i + 1) begin
+        A = i;
+        #10;
+        $display("A = %d, Y = %d", A, Y);
+    end
+
+    $finish;
+end
+
+endmodule
